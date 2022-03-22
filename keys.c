@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:46:06 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/21 20:09:10 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:56:45 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 
 int	close_fdf(t_fdf *data)
 {
-	(void)data;
+	int	y;
+
+	y = 0;
+	free(data->addr);
+	while (y < data->height)
+	{
+		free(data->z_matrix[y]);
+		y++;
+	}
+	system("leaks fdf");
 	exit(0);
 	return (0);
 }
@@ -57,6 +66,13 @@ int	mouse_press(int button, int x, int y, t_fdf *data)
 		data->zoom += 1;
 	if (button == 5)
 		data->zoom -= 1;
+	if (button == 1)
+	{
+		data->x_off = WIN_WID / 2;
+		data->y_off = WIN_HEI / 2;
+	}
+	if (button == 2)
+		data->zoom = WIN_HEI / (data->width + data->height);
 	draw(data, &data->bits_p_p, &data->size_line, &data->endian);
 	return (0);
 }

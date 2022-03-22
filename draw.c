@@ -6,19 +6,42 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 18:15:07 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/21 20:09:08 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:37:08 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	controls_print(t_fdf *data)
+{
+	int	y;
+
+	y = 0;
+	mlx_string_put(data->mlx, data->win, 20, y += 25, 0xEAEAEA,
+		"Controls (tip - you can press and hold 1 button at a time):");
+	mlx_string_put(data->mlx, data->win, 20, y += 25, 0xEAEAEA,
+		"Arrows = move picture up/down/right/left");
+	mlx_string_put(data->mlx, data->win, 20, y += 25, 0xEAEAEA,
+		"Num 8 / Num 5 = increase/decrease the height of non-0 points");
+	mlx_string_put(data->mlx, data->win, 20, y += 25, 0xEAEAEA,
+		"Num 7 / Num 9 = change the projection angle");
+	mlx_string_put(data->mlx, data->win, 20, y += 25, 0xEAEAEA,
+		"Num + / Num - / Wheel Up / Wheel Down = Zoom In / Zoom Out");
+	mlx_string_put(data->mlx, data->win, 20, y += 25, 0xEAEAEA,
+		"Left mouse click = Place back to center");
+	mlx_string_put(data->mlx, data->win, 20, y += 25, 0xEAEAEA,
+		"Right mouse click = Set to initial zoom");
+}
+
 int	draw(t_fdf *data, int *bits_p_p, int *size_line, int *endian)
 {
+	mlx_clear_window(data->mlx, data->win);
 	data->img = mlx_new_image(data->mlx, WIN_WID, WIN_HEI);
 	data->addr = mlx_get_data_addr(data->img, bits_p_p, size_line, endian);
 	draw_points(data);
 	positions_init(data);
 	mlx_put_image_to_window(data, data->win, data->img, 0, 0);
+	controls_print(data);
 	mlx_destroy_image(data->mlx, data->img);
 	data->img = NULL;
 	data->addr = NULL;
@@ -54,7 +77,7 @@ void	draw_prep(t_fdf data)
 	data.z1 = data.z_matrix[data.y_e][data.x_e];
 	if (data.z_matrix[data.y_s][data.x_s] == 0
 			&& data.z_matrix[data.y_e][data.x_e] == 0)
-		data.color = 0x6c5b78;
+		data.color = 0x6e5d80;
 	else
 		data.color = 0xff4173;
 	data.x_s = (data.x_s - (data.width / 2)) * data.zoom;

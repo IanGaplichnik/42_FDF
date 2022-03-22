@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:54:08 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/21 20:09:09 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:07:13 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_fdf
 	int		y_off;
 	int		z;
 	int		z1;
-	int		z_off;
 	int		z_mult;
 	float	angle;
 	int		iso;

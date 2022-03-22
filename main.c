@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:53:23 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/21 20:09:11 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:35:09 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ void	first_init(t_fdf *data)
 	data->width = 0;
 	data->height = 0;
 	data->z_matrix = NULL;
-	data->zoom = 40;
 	data->x_off = WIN_WID / 2;
 	data->y_off = WIN_HEI / 2;
-	data->z_mult = 1;
+	data->z_mult = 2;
 	data->angle = 0.8;
 	data->img = NULL;
 	data->mlx = NULL;
@@ -59,6 +58,7 @@ int	main(int argc, char **argv)
 	positions_init(data);
 	first_init(data);
 	reading_file(data, argv[1]);
+	data->zoom = WIN_HEI / (data->width + data->height);
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		error_print_exit("Error !data->mlx");
