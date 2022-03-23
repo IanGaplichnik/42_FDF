@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:54:08 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/22 14:07:13 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:48:07 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_fdf
 	int		width;
 	int		height;
 	int		**z_matrix;
+	int		**c_matrix;
 
 	int		x_s;
 	int		x_e;
@@ -50,14 +51,30 @@ typedef struct s_fdf
 	int		zoom;
 	int		color;
 	int		mouse_press;
+	int		c_flag;
 }	t_fdf;
 
+/*--------MAIN--------*/
 void	error_print_exit(char *error_text);
-void	reading_file(t_fdf *data, char *file);
-void	read_height_width(char *file, t_fdf *data);
-void	read_width(char *line, t_fdf *data, int i, int width);
-void	create_matrix(t_fdf *data, int i);
-void	fill_matrix(t_fdf *data, char *file, int fd);
+void	positions_init(t_fdf *d);
+void	params_init(t_fdf *d);
+void	mlx_first_call(t_fdf *d);
+
+/*-------DRAW---------*/
+int		drawing_algo(t_fdf *d, int *bits_p_p, int *size_line, int *endian);
+void	choose_points(t_fdf *d);
+void	draw_line(t_fdf d, int i);
+void	my_pixel_put(t_fdf *d);
+
+/*------DRAW_PREP-----*/
+void	draw_prep(t_fdf d);
+void	choose_color(t_fdf *d);
+void	apply_zoom(t_fdf *d);
+
+/*------FILE_OPERATIONS-----*/
+void	file_operations(t_fdf *d, char *file);
+void	read_height_width(char *file, t_fdf *d);
+void	read_width(char *line, t_fdf *d, int i, int width);
 
 /*--------KEYS-------------*/
 void	controls_call(t_fdf *data);
@@ -66,13 +83,12 @@ int		key_commands(int key, t_fdf *data);
 void	mouse_apply(int button, t_fdf *data);
 int		mouse_hook(int button, int x, int y, t_fdf *data);
 
-/*-------BRESENHEIM---------*/
-void	my_pixel_put(t_fdf *data);
-void	draw_line(t_fdf data, int i);
-void	draw_prep(t_fdf data);
-void	draw_points(t_fdf *data);
-int		draw(t_fdf *data, int *bits_p_p, int *size_line, int *endian);
-void	isometric(int *x, int *y, float z, t_fdf *data);
+/*-------MATRIX_OPERATIONS------*/
+void	create_matrix(t_fdf *d, int i);
+void	create_color_matrix(t_fdf *d, int i);
+void	init_color_matrix(t_fdf *d);
+void	fill_numbers_colors(t_fdf *d, char **numbers, int y);
+void	fill_matrix(t_fdf *d, char *file, int fd);
 
 /*--------UTILS------------*/
 int		ft_abs(int a);
@@ -81,5 +97,14 @@ int		error_calc(int xd, int yd);
 void	my_pixel_put(t_fdf *data);
 int		mouse_hook(int button, int x, int y, t_fdf *data);
 void	positions_init(t_fdf *data);
+int		ft_atoi_base(const char *str, int str_base);
+void	isometric(int *x, int *y, float z, t_fdf *d);
+void	create_color_matrix(t_fdf *data, int i);
+void	init_color_matrix(t_fdf *data);
+void	controls_print(t_fdf *data);
+void	mlx_first_call(t_fdf *data);
+void	choose_color(t_fdf *data);
+void	apply_zoom(t_fdf *data);
+void	draw_prep(t_fdf d);
 
 #endif

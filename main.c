@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:53:23 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/22 14:35:09 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:25:45 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,52 +19,60 @@ void	error_print_exit(char *error_text)
 	exit(1);
 }
 
-void	positions_init(t_fdf *data)
+void	positions_init(t_fdf *d)
 {
-	data->x_s = 0;
-	data->x_e = 1;
-	data->y_s = 0;
-	data->y_e = 0;
+	d->x_s = 0;
+	d->x_e = 1;
+	d->y_s = 0;
+	d->y_e = 0;
 }
 
-void	first_init(t_fdf *data)
+void	params_init(t_fdf *d)
 {
-	data->width = 0;
-	data->height = 0;
-	data->z_matrix = NULL;
-	data->x_off = WIN_WID / 2;
-	data->y_off = WIN_HEI / 2;
-	data->z_mult = 2;
-	data->angle = 0.8;
-	data->img = NULL;
-	data->mlx = NULL;
-	data->win = NULL;
-	data->bits_p_p = 0;
-	data->size_line = 0;
-	data->endian = 0;
-	data->iso = 0;
-	data->mouse_press = 0;
+	d->width = 0;
+	d->height = 0;
+	d->z_matrix = NULL;
+	d->x_off = WIN_WID / 2;
+	d->y_off = WIN_HEI / 2;
+	d->z_mult = 2;
+	d->angle = 0.8;
+	d->img = NULL;
+	d->mlx = NULL;
+	d->win = NULL;
+	d->bits_p_p = 0;
+	d->size_line = 0;
+	d->endian = 0;
+	d->iso = 0;
+	d->mouse_press = 0;
+	d->c_flag = 0;
+}
+
+void	mlx_first_call(t_fdf *d)
+{
+	d->zoom = WIN_HEI / (d->width + d->height);
+	d->mlx = mlx_init();
+	if (!d->mlx)
+		error_print_exit("Error !d->mlx");
+	d->win = mlx_new_window(d->mlx, WIN_WID, WIN_HEI, "mlx 42");
+	if (!d->win)
+		error_print_exit("Error !d->win");
 }
 
 int	main(int argc, char **argv)
 {
-	t_fdf	*data;
+	t_fdf	*d;
 
 	if (argc != 2)
 		error_print_exit("Usage: ./fdf %map_name%");
-	data = (t_fdf *)malloc(sizeof(t_fdf));
-	if (!data)
+	d = (t_fdf *)malloc(sizeof(t_fdf));
+	if (!d)
 		error_print_exit("Error allocating struct");
-	positions_init(data);
-	first_init(data);
-	reading_file(data, argv[1]);
-	data->zoom = WIN_HEI / (data->width + data->height);
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		error_print_exit("Error !data->mlx");
-	data->win = mlx_new_window(data->mlx, WIN_WID, WIN_HEI, "mlx 42");
-	draw(data, &data->bits_p_p, &data->size_line, &data->endian);
-	controls_call(data);
-	mlx_loop(data->mlx);
+	positions_init(d);
+	params_init(d);
+	file_operations(d, argv[1]);
+	mlx_first_call(d);
+	drawing_algo(d, &d->bits_p_p, &d->size_line, &d->endian);
+	controls_call(d);
+	mlx_loop(d->mlx);
 	return (0);
 }

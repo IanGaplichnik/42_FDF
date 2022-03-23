@@ -5,10 +5,12 @@ NAME = fdf
 FLAGS = -g -Wall -Werror -Wextra
 
 SRC = main.c \
-	  file_check.c \
+	  file_operations.c \
+	  matrix_operations.c \
 	  keys.c \
 	  utils.c \
-	  draw.c
+	  draw.c \
+	  draw_prep.c
 
 OBJ = $(SRC:.c=.o)
 
