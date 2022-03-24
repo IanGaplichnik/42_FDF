@@ -6,32 +6,11 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 16:53:37 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/24 14:44:47 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 20:08:51 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	ft_abs(int a)
-{
-	if (a < 0)
-		return (-a);
-	return (a);
-}
-
-int	choose_direct(int x1, int x2)
-{
-	if (x1 < x2)
-		return (1);
-	return (-1);
-}
-
-int	error_calc(int xd, int yd)
-{
-	if (xd > yd)
-		return (xd / 2);
-	return (-yd / 2);
-}
 
 void	isometric(int *x, int *y, float z, t_fdf *d)
 {
@@ -58,20 +37,19 @@ void	controls_print(t_fdf *d)
 		"Left mouse click = Place back to center");
 	mlx_string_put(d->mlx, d->win, 20, y += 25, 0xEAEAEA,
 		"Right mouse click = Set to initial zoom");
+	mlx_string_put(d->mlx, d->win, 20, y += 25, 0xEAEAEA,
+		"p = change projection");
+	if (d->iso == 1)
+		mlx_string_put(d->mlx, d->win, (WIN_WID / 2) - 100, 20, 0xEAEAEA,
+			"Isometric Projection");
+	else
+		mlx_string_put(d->mlx, d->win, (WIN_WID / 2) - 80, 20, 0xEAEAEA,
+			"Plain Projection");
 }
 
 int	close_fdf(t_fdf *d)
 {
-	int	y;
-
-	y = 0;
-	free(d->addr);
-	while (y < d->height)
-	{
-		free(d->z_matrix[y]);
-		y++;
-	}
-	/* system("leaks fdf"); */
+	(void)d;
 	exit(0);
 	return (0);
 }

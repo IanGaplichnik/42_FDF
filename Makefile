@@ -9,6 +9,7 @@ SRC = main.c \
 	  matrix_operations.c \
 	  keys.c \
 	  utils.c \
+	  utils_2.c\
 	  draw.c \
 	  draw_prep.c
 

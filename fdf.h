@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:54:08 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/24 15:00:28 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 18:38:37 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,19 @@ typedef struct s_fdf
 	int		c_flag;
 }	t_fdf;
 
-/*--------MAIN--------*/
+/*------MAIN---------*/
 void	error_print_exit(char *error_text);
 void	positions_init(t_fdf *d);
 void	params_init(t_fdf *d);
 void	mlx_first_call(t_fdf *d);
 
-/*-------DRAW---------*/
+/*------DRAW---------*/
 int		drawing_algo(t_fdf *d, int *bits_p_p, int *size_line, int *endian);
 void	choose_points(t_fdf *d);
 void	draw_line(t_fdf d, int i);
 void	my_pixel_put(t_fdf *d);
 
-/*------DRAW_PREP-----*/
+/*------DRAW_PREP----*/
 void	draw_prep(t_fdf d);
 void	choose_color(t_fdf *d);
 void	apply_zoom(t_fdf *d);
@@ -76,26 +76,28 @@ void	file_operations(t_fdf *d, char *file);
 void	read_height_width(char *file, t_fdf *d);
 void	read_width(char *line, t_fdf *d, int i, int width);
 
-/*--------KEYS-------------*/
+/*------KEYS-------------*/
 void	controls_call(t_fdf *d);
 int		key_commands(int key, t_fdf *d);
 void	mouse_apply(int button, t_fdf *d);
 int		mouse_hook(int button, int x, int y, t_fdf *d);
 int		key_press_others(int key, t_fdf *d);
 
-/*-------MATRIX_OPERATIONS------*/
+/*------MATRIX_OPERATIONS------*/
 void	create_matrix(t_fdf *d, int i);
 void	create_color_matrix(t_fdf *d, int i);
 void	init_color_matrix(t_fdf *d);
 void	fill_numbers_colors(t_fdf *d, char **numbers, int y);
 void	fill_matrix(t_fdf *d, char *file, int fd);
 
-/*--------UTILS------------*/
-int		ft_abs(int a);
-int		choose_direct(int x1, int x2);
-int		error_calc(int xd, int yd);
+/*------UTILS------------*/
 void	isometric(int *x, int *y, float z, t_fdf *d);
 void	controls_print(t_fdf *d);
 int		close_fdf(t_fdf *d);
+
+/*------UTILS_2-----------*/
+int		ft_abs(int a);
+int		choose_direct(int x1, int x2);
+int		error_calc(int xd, int yd);
 
 #endif
