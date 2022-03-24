@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 16:53:37 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/24 12:04:36 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 14:44:47 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,20 @@ void	controls_print(t_fdf *d)
 		"Left mouse click = Place back to center");
 	mlx_string_put(d->mlx, d->win, 20, y += 25, 0xEAEAEA,
 		"Right mouse click = Set to initial zoom");
+}
+
+int	close_fdf(t_fdf *d)
+{
+	int	y;
+
+	y = 0;
+	free(d->addr);
+	while (y < d->height)
+	{
+		free(d->z_matrix[y]);
+		y++;
+	}
+	/* system("leaks fdf"); */
+	exit(0);
+	return (0);
 }

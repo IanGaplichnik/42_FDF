@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:53:23 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/23 20:25:45 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 15:00:57 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	params_init(t_fdf *d)
 
 void	mlx_first_call(t_fdf *d)
 {
-	d->zoom = WIN_HEI / (d->width + d->height);
+	d->zoom = (WIN_HEI / (d->width + d->height));
 	d->mlx = mlx_init();
 	if (!d->mlx)
 		error_print_exit("Error !d->mlx");

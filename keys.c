@@ -6,28 +6,12 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:46:06 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/24 12:53:49 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 15:01:51 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
-
-int	close_fdf(t_fdf *d)
-{
-	int	y;
-
-	y = 0;
-	free(d->addr);
-	while (y < d->height)
-	{
-		free(d->z_matrix[y]);
-		y++;
-	}
-	/* system("leaks fdf"); */
-	exit(0);
-	return (0);
-}
 
 int	key_press(int key, t_fdf *d)
 {
@@ -47,6 +31,13 @@ int	key_press(int key, t_fdf *d)
 		d->zoom -= 1;
 	if (key == 91)
 		d->z_mult++;
+	key_press_others(key, d);
+	drawing_algo(d, &d->bits_p_p, &d->size_line, &d->endian);
+	return (0);
+}
+
+int	key_press_others(int key, t_fdf *d)
+{
 	if (key == 87)
 		d->z_mult--;
 	if (key == 89)
@@ -60,7 +51,6 @@ int	key_press(int key, t_fdf *d)
 		else
 			d->iso = 0;
 	}
-	drawing_algo(d, &d->bits_p_p, &d->size_line, &d->endian);
 	return (0);
 }
 
@@ -79,7 +69,7 @@ int	mouse_press(int button, int x, int y, t_fdf *d)
 		d->y_off = WIN_HEI / 2;
 	}
 	if (button == 2)
-		d->zoom = WIN_HEI / (d->width + d->height);
+		d->zoom = (WIN_HEI / (d->width + d->height));
 	drawing_algo(d, &d->bits_p_p, &d->size_line, &d->endian);
 	return (0);
 }

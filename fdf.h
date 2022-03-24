@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:54:08 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/24 12:57:08 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 15:00:28 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ void	read_width(char *line, t_fdf *d, int i, int width);
 
 /*--------KEYS-------------*/
 void	controls_call(t_fdf *d);
-int		is_key(int key);
 int		key_commands(int key, t_fdf *d);
 void	mouse_apply(int button, t_fdf *d);
 int		mouse_hook(int button, int x, int y, t_fdf *d);
+int		key_press_others(int key, t_fdf *d);
 
 /*-------MATRIX_OPERATIONS------*/
 void	create_matrix(t_fdf *d, int i);
@@ -91,11 +91,11 @@ void	fill_numbers_colors(t_fdf *d, char **numbers, int y);
 void	fill_matrix(t_fdf *d, char *file, int fd);
 
 /*--------UTILS------------*/
-
 int		ft_abs(int a);
 int		choose_direct(int x1, int x2);
 int		error_calc(int xd, int yd);
 void	isometric(int *x, int *y, float z, t_fdf *d);
 void	controls_print(t_fdf *d);
+int		close_fdf(t_fdf *d);
 
 #endif
