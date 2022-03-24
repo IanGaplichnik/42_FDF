@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:54:08 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/23 20:48:07 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:57:08 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_fdf
 	int		y_off;
 	int		z;
 	int		z1;
-	int		z_mult;
+	float	z_mult;
 	float	angle;
 	int		iso;
 	int		xd;
@@ -77,11 +77,11 @@ void	read_height_width(char *file, t_fdf *d);
 void	read_width(char *line, t_fdf *d, int i, int width);
 
 /*--------KEYS-------------*/
-void	controls_call(t_fdf *data);
+void	controls_call(t_fdf *d);
 int		is_key(int key);
-int		key_commands(int key, t_fdf *data);
-void	mouse_apply(int button, t_fdf *data);
-int		mouse_hook(int button, int x, int y, t_fdf *data);
+int		key_commands(int key, t_fdf *d);
+void	mouse_apply(int button, t_fdf *d);
+int		mouse_hook(int button, int x, int y, t_fdf *d);
 
 /*-------MATRIX_OPERATIONS------*/
 void	create_matrix(t_fdf *d, int i);
@@ -91,20 +91,11 @@ void	fill_numbers_colors(t_fdf *d, char **numbers, int y);
 void	fill_matrix(t_fdf *d, char *file, int fd);
 
 /*--------UTILS------------*/
+
 int		ft_abs(int a);
 int		choose_direct(int x1, int x2);
 int		error_calc(int xd, int yd);
-void	my_pixel_put(t_fdf *data);
-int		mouse_hook(int button, int x, int y, t_fdf *data);
-void	positions_init(t_fdf *data);
-int		ft_atoi_base(const char *str, int str_base);
 void	isometric(int *x, int *y, float z, t_fdf *d);
-void	create_color_matrix(t_fdf *data, int i);
-void	init_color_matrix(t_fdf *data);
-void	controls_print(t_fdf *data);
-void	mlx_first_call(t_fdf *data);
-void	choose_color(t_fdf *data);
-void	apply_zoom(t_fdf *data);
-void	draw_prep(t_fdf d);
+void	controls_print(t_fdf *d);
 
 #endif

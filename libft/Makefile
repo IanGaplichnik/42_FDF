@@ -6,7 +6,7 @@
 #    By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 15:19:12 by igaplich          #+#    #+#              #
-#    Updated: 2022/03/08 13:50:28 by igaplich         ###   ########.fr        #
+#    Updated: 2022/03/24 12:04:17 by igaplich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,22 +80,23 @@ SRC = ft_strlen.c \
 	ft_lstadd_end.c \
 	ft_lstlen.c \
 	ft_lstmerge.c \
+	ft_atoi_base.c \
 	get_next_line.c
 
 all: $(NAME)
 
 $(NAME):
-	@echo "compiling..."
+	@echo "compiling libft"
 	@$(CC) $(FLAGS) $(SRC)
 	@ar rcs $(NAME) $(SRC2)
 
 clean:
-	@echo "Deleting ALL object files..."
+	@echo "Deleting libft object files"
 	@/bin/rm -f $(SRC2)
 
 fclean: clean
-	@echo "Deleting EVERYTHING..."
+	@echo "Deleting libft object files and library files"
 	@/bin/rm -f $(NAME)
 
 re: fclean all
-	@echo "Recompiling..."
+	@echo "Recompiling libft"

@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:33:12 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/23 20:33:26 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:42:18 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw_prep(t_fdf d)
 void	choose_color(t_fdf *d)
 {
 	if ((d->z != 0 || d->z1 != 0) && d->c_flag == 0)
-		d->color = 0xff4173;
+		d->color = 0xFF2153;
 	else if (d->c_matrix[d->y_s][d->x_s] != 7232896 && d->c_flag == 1)
 		d->color = d->c_matrix[d->y_s][d->x_s];
 	else if (d->c_matrix[d->y_e][d->x_e] != 7232896 && d->c_flag == 1)

@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:44:31 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/08 13:52:04 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:06:42 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int		ft_isspace(int c);
 void	ft_lstadd_end(t_list **alst, t_list *new);
 int		ft_lstlen(t_list **alst);
 t_list	*ft_lstmerge(t_list **dst, t_list **src);
+int		ft_atoi_base(const char *str, int str_base);
 int		get_next_line(const int fd, char **line);
 #endif

@@ -6,7 +6,7 @@
 /*   By: igaplich <igaplich@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 16:53:37 by igaplich          #+#    #+#             */
-/*   Updated: 2022/03/23 20:48:36 by igaplich         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:04:36 by igaplich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,53 +39,6 @@ void	isometric(int *x, int *y, float z, t_fdf *d)
 	*y = ((*x + *y) * sin(d->angle) - (z * d->z_mult));
 }
 
-int		ft_iswhitespace(char const c)
-{
-	if (c == ' ' || c == '\n' || c == '\t' || c == '\v'
-		|| c == '\r' || c == '\f')
-		return (1);
-	return (0);
-}
-
-int	base(int c, int base)
-{
-	char	*str = "0123456789abcdef";
-	char	*str2 = "0123456789ABCDEF";
-	int		i = 0;
-
-	while (i < base)
-	{
-		if (c == str[i] || c == str2[i])
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int ft_atoi_base(const char *str, int str_base)
-{
-	int	nb = 0;
-	int	negatif = 0;
-	int	i = 0;
-	while (ft_iswhitespace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			negatif = 1;
-		i++;
-	}
-	while (base(str[i], str_base) != -1)
-	{
-		nb = nb * str_base;
-		nb = nb + base(str[i], str_base);
-		i++;
-	}
-	if (negatif)
-		return (-nb);
-	return (nb);
-}
-
 void	controls_print(t_fdf *d)
 {
 	int	y;
@@ -106,4 +59,3 @@ void	controls_print(t_fdf *d)
 	mlx_string_put(d->mlx, d->win, 20, y += 25, 0xEAEAEA,
 		"Right mouse click = Set to initial zoom");
 }
-
