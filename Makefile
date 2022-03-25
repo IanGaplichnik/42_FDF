@@ -2,7 +2,7 @@ CC = gcc
 
 NAME = fdf
 
-FLAGS = -g -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 SRC = main.c \
 	  file_operations.c \
