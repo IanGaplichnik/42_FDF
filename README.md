@@ -24,4 +24,4 @@ where first number, before comma, represents the height of the starting/ending p
 
 ## Usage
 
-_REQUIRES MINILIB X INSTALLED_
+__REQUIRES MINILIB X INSTALLED__
