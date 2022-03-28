@@ -20,3 +20,8 @@ Information in the file can be, for example, represented in the next way:
 0  0  0  0  0  0  0  0  0  0
 ```
 where first number, before comma, represents the height of the starting/ending point of the line, value after comma is a hex color value, applied to the line.
+
+
+## Usage
+
+_REQUIRES MINILIB X INSTALLED_
