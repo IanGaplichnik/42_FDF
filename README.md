@@ -2,6 +2,8 @@
 This project allows you to create a mesh, using data, extracted from a file. 
 
 ![example screenshot](https://github.com/IanGaplichnik/42_FDF/blob/master/img/1.png)
+![example screenshot](https://github.com/IanGaplichnik/42_FDF/blob/master/img/2.png)
+![example screenshot](https://github.com/IanGaplichnik/42_FDF/blob/master/img/3.png)
 
 
 Information in the file can be, for example, represented in the next way:
