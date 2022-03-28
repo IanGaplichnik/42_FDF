@@ -25,3 +25,4 @@ where first number, before comma, represents the height of the starting/ending p
 ## Usage
 
 __REQUIRES MINILIB X INSTALLED__
+Use ```make``` to compile. After that, an executable ```./fdf``` will be created. To run the program, type ```./fdf %map_name%```. Program will open in a separate window. To quit, press ```ESC```.
