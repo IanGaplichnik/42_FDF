@@ -1,5 +1,10 @@
 # 42_FDF
-This project allows you to create a mesh, using data, extracted from a file. Information in the file can be, for example, represented in the next way:
+This project allows you to create a mesh, using data, extracted from a file. 
+
+![example screenshot](https://github.com/IanGaplichnik/42_FDF/blob/master/img/1.png)
+
+
+Information in the file can be, for example, represented in the next way:
 ```
 0  0  0  0  0  0  0  0  0  0
 0 10 10 10 10 10 10 10 10  0
